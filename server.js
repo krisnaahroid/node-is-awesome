@@ -2,6 +2,7 @@ const express = require('express')
 const hbs = require('hbs')
 const fs  = require('fs')
 
+const port = process.env.PORT || 3400
 let app = express()
 
 app.set('view engine', 'hbs')
@@ -15,7 +16,7 @@ hbs.registerHelper('getCurrentYears', () => {
 hbs.registerHelper('say', (text) => {
   return text.toUpperCase()
 })
-// 
+//
 // app.use((req, res, next) => {
 //   res.render('maintance.hbs')
 // })
@@ -55,4 +56,6 @@ app.get('/bad', (req, res) => {
   })
 })
 
-app.listen(3400);
+app.listen(port, ()=>{
+  console.log(`list on port ${port}`)
+});
